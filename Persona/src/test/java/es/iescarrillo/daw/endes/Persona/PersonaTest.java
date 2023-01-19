@@ -19,6 +19,7 @@ public class PersonaTest {
 	Persona personaTestInfrapeso = new Persona("Feliciano", 67, 'H', 50.0, 1.8);
 
 	/**
+	 * 
 	 * Test compronar la edad
 	 */
 	@Test
