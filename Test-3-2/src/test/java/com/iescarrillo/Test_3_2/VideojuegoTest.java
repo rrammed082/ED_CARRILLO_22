@@ -10,6 +10,7 @@ public class VideojuegoTest {
 	
 	@Test
 	public void testSetTitulo() {
+		
 		Videojuego juego1 = new Videojuego();
 		juego1.setTitulo("Elden Ring");
 		
