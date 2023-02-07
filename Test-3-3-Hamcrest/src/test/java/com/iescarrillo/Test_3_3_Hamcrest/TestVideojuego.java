@@ -1,11 +1,13 @@
 package com.iescarrillo.Test_3_3_Hamcrest;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasItemInArray;
 import static org.hamcrest.Matchers.instanceOf;
 import static org.hamcrest.Matchers.nullValue;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.lessThan;
+import static org.hamcrest.Matchers.is;
 
 import java.util.Arrays;
 
@@ -88,4 +90,32 @@ public class TestVideojuego {
 		
 		assertThat(listaJuegos[1].getHorasEstimadas(), lessThan(listaJuegos[0].getHorasEstimadas()));
 	}
+	
+	@Test
+	public void testcompareTo() {
+		Videojuego juego1 = new Videojuego("Elden Ring", 32, "Soulslike", "From Software");
+		Videojuego juego2 = new Videojuego("Dark Soul", 15, "Soulslike", "From Software");
+		Videojuego juego3 = new Videojuego("Elden Ring", 32, "Soulslike", "From Software");
+
+		assertThat(juego1.compareTo(juego2), equalTo(Serie.MAYOR));
+		assertThat(juego2.compareTo(juego1), equalTo(Serie.MENOR));
+		assertThat(juego1.compareTo(juego3), equalTo(Serie.IGUAL));
+	}
+	
+	@Test
+    public void testEntregar() {
+        Videojuego videojuego = new Videojuego();
+        videojuego.entregar();
+
+        assertThat(videojuego.isEntregado(), is(true));
+    }
+	
+	@Test
+    public void testDevolver() {
+        Videojuego videojuego = new Videojuego();
+        videojuego.entregar();
+        videojuego.devolver();
+
+        assertThat(videojuego.isEntregado(), is(false));
+    }
 }
