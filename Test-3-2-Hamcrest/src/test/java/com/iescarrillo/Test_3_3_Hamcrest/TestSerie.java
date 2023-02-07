@@ -1,4 +1,4 @@
-package com.iescarrillo.Test_3_2_Hamcrest;
+package com.iescarrillo.Test_3_3_Hamcrest;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasItemInArray;
@@ -10,6 +10,8 @@ import static org.hamcrest.Matchers.nullValue;
 import java.util.Arrays;
 
 import org.junit.jupiter.api.Test;
+
+import com.iescarrillo.Test_3_2_Hamcrest.Serie;
 
 public class TestSerie {
 	
