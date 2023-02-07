@@ -12,6 +12,10 @@ import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
 public class TestSerie {
+	
+	/**
+	 * Comprueba que los tipos de datos son correctos
+	 */
 	@Test
 	public void compruebaTipo() {
 		Serie juego1 = new Serie();
@@ -30,6 +34,9 @@ public class TestSerie {
 
 	}
 
+	/**
+	 * Comprueba si existe un objeto igual en un array de Serie
+	 */
 	@Test
 	public void compruebaElementoEnArray() {
 		Serie[] listaSeries = new Serie[2];
@@ -41,6 +48,10 @@ public class TestSerie {
 
 		assertThat(listaSeries, hasItemInArray(juegoAComparar));
 	}
+	
+	/**
+	 * Compara si el elemento es nulo
+	 */
 	@Test
 	public void comprobarNulo() {
 		Serie[] listaSeries = new Serie[2];
@@ -51,6 +62,9 @@ public class TestSerie {
 		assertThat(listaSeries[1], nullValue(Serie.class));
 	}
 	
+	/**
+	 * Comprueba si la cantidad elementos del array es igual a la indicada
+	 */
 	@Test
 	public void comprobarCantidadElementos() {
 		Serie[] listaSeries = new Serie[2];
@@ -61,6 +75,10 @@ public class TestSerie {
 		assertThat(Arrays.asList(listaSeries), hasSize(2));
 	}
 	
+	/**
+	 * Comprueba las horas estimadas de dos objetos de la clase Serie e indica si el primero es mayor
+	 * que el segundo.
+	 */
 	@Test
 	public void compararHorasJugadas() {
 		Serie[] listaSeries = new Serie[2];

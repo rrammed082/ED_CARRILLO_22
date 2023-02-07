@@ -13,6 +13,9 @@ import org.junit.jupiter.api.Test;
 
 public class TestVideojuego {
 
+	/**
+	 * Comprueba que los tipos de datos son correctos
+	 */
 	@Test
 	public void compruebaTipo() {
 		Videojuego juego1 = new Videojuego();
@@ -31,6 +34,9 @@ public class TestVideojuego {
 
 	}
 
+	/**
+	 * Comprueba si existe un objeto igual en un array de Videojuegos
+	 */
 	@Test
 	public void compruebaElementoEnArray() {
 		Videojuego[] listaJuegos = new Videojuego[2];
@@ -42,16 +48,23 @@ public class TestVideojuego {
 
 		assertThat(listaJuegos, hasItemInArray(juegoAComparar));
 	}
+	
+	/**
+	 * Compara si el elemento es nulo
+	 */
 	@Test
 	public void comprobarNulo() {
 		Videojuego[] listaJuegos = new Videojuego[2];
 
 		listaJuegos[0] = new Videojuego("Elden Ring", 32, "Soulslike", "From Software");
 		listaJuegos[1] = null;
-
+		
 		assertThat(listaJuegos[1], nullValue(Videojuego.class));
 	}
 	
+	/**
+	 * Comprueba si la cantidad elementos del array es igual a la indicada
+	 */
 	@Test
 	public void comprobarCantidadElementos() {
 		Videojuego[] listaJuegos = new Videojuego[2];
@@ -62,6 +75,10 @@ public class TestVideojuego {
 		assertThat(Arrays.asList(listaJuegos), hasSize(2));
 	}
 	
+	/**
+	 * Comprueba las horas estimadas de dos objetos de la clase videojuegos e indica si el primero es mayor
+	 * que el segundo.
+	 */
 	@Test
 	public void compararHorasJugadas() {
 		Videojuego[] listaJuegos = new Videojuego[2];
