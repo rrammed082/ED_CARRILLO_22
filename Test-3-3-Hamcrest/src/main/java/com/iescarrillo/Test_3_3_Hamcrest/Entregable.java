@@ -1,4 +1,4 @@
-package com.iescarrillo.Test_3_2_Hamcrest;
+package com.iescarrillo.Test_3_3_Hamcrest;
 public interface Entregable {
 	  
     public void entregar();
