@@ -90,7 +90,9 @@ public class TestSerie {
 
 		assertThat(listaSeries[1].getNumeroTemporadas(), lessThan(listaSeries[0].getNumeroTemporadas()));
 	}
-
+	/**
+	 * Test que comprueba método toString comparando el objeto que llama al toString con los valores de otro objeto
+	 */
 	@Test
 	public void testToString() {
 		Serie serie = new Serie("Juego de Tronos", 8, "Fantasia", "R.R.Martin");
@@ -98,7 +100,10 @@ public class TestSerie {
 				+ "\tNumero de temporadas: 8\n" + "\tGenero: Fantasia\n" + "\tCreador: R.R.Martin";
 		assertThat(serie.toString(), is(seriaComprobar));
 	}
-
+	/**
+	 * Comprueba el método compareTo el cual devuelve {1, 0, -1} dependiento de si
+	 * una serie tiene menos temporadas que otra
+	 */
 	@Test
 	public void testcompareTo() {
 		Serie serie1 = new Serie("Juego de Tronos", 8, "Fantasía", "R.R.Martin");
@@ -109,7 +114,9 @@ public class TestSerie {
 		assertThat(serie2.compareTo(serie1), equalTo(Serie.MENOR));
 		assertThat(serie1.compareTo(serie3), equalTo(Serie.IGUAL));
 	}
-
+	/**
+	 * Comprueba si una Serie ha sido entregado
+	 */
 	@Test
 	public void testEntregar() {
 		Serie serie = new Serie();
@@ -117,7 +124,9 @@ public class TestSerie {
 
 		assertThat(serie.isEntregado(), is(true));
 	}
-
+	/**
+	 * Comprueba si una Serie ha sido devuelta
+	 */
 	@Test
 	public void testDevolver() {
 		Serie serie = new Serie();

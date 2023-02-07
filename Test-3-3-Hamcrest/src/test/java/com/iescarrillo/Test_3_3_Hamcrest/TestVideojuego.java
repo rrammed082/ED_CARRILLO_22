@@ -50,7 +50,7 @@ public class TestVideojuego {
 
 		assertThat(listaJuegos, hasItemInArray(juegoAComparar));
 	}
-	
+
 	/**
 	 * Compara si el elemento es nulo
 	 */
@@ -60,10 +60,10 @@ public class TestVideojuego {
 
 		listaJuegos[0] = new Videojuego("Elden Ring", 32, "Soulslike", "From Software");
 		listaJuegos[1] = null;
-		
+
 		assertThat(listaJuegos[1], nullValue(Videojuego.class));
 	}
-	
+
 	/**
 	 * Comprueba si la cantidad elementos del array es igual a la indicada
 	 */
@@ -73,13 +73,13 @@ public class TestVideojuego {
 
 		listaJuegos[0] = new Videojuego("Elden Ring", 32, "Soulslike", "From Software");
 		listaJuegos[1] = new Videojuego("Dark Soul", 15, "Soulslike", "From Software");
-		
+
 		assertThat(Arrays.asList(listaJuegos), hasSize(2));
 	}
-	
+
 	/**
-	 * Comprueba las horas estimadas de dos objetos de la clase videojuegos e indica si el primero es mayor
-	 * que el segundo.
+	 * Comprueba las horas estimadas de dos objetos de la clase videojuegos e indica
+	 * si el primero es mayor que el segundo.
 	 */
 	@Test
 	public void compararHorasJugadas() {
@@ -87,10 +87,14 @@ public class TestVideojuego {
 
 		listaJuegos[0] = new Videojuego("Elden Ring", 32, "Soulslike", "From Software");
 		listaJuegos[1] = new Videojuego("Dark Soul", 15, "Soulslike", "From Software");
-		
+
 		assertThat(listaJuegos[1].getHorasEstimadas(), lessThan(listaJuegos[0].getHorasEstimadas()));
 	}
-	
+
+	/**
+	 * Comprueba el método compareTo el cual devuelve {1, 0, -1} dependiento de si
+	 * un juego tiene menos horas estimadas que otro
+	 */
 	@Test
 	public void testcompareTo() {
 		Videojuego juego1 = new Videojuego("Elden Ring", 32, "Soulslike", "From Software");
@@ -101,21 +105,39 @@ public class TestVideojuego {
 		assertThat(juego2.compareTo(juego1), equalTo(Serie.MENOR));
 		assertThat(juego1.compareTo(juego3), equalTo(Serie.IGUAL));
 	}
-	
-	@Test
-    public void testEntregar() {
-        Videojuego videojuego = new Videojuego();
-        videojuego.entregar();
 
-        assertThat(videojuego.isEntregado(), is(true));
-    }
-	
+	/**
+	 * Comprueba si un Videojuego ha sido entregado
+	 */
 	@Test
-    public void testDevolver() {
-        Videojuego videojuego = new Videojuego();
-        videojuego.entregar();
-        videojuego.devolver();
+	public void testEntregar() {
+		Videojuego videojuego = new Videojuego();
+		videojuego.entregar();
 
-        assertThat(videojuego.isEntregado(), is(false));
-    }
+		assertThat(videojuego.isEntregado(), is(true));
+	}
+
+	/**
+	 * comprueba si un Videojuego ha sido devuelto
+	 */
+	@Test
+	public void testDevolver() {
+		Videojuego videojuego = new Videojuego();
+		videojuego.entregar();
+		videojuego.devolver();
+
+		assertThat(videojuego.isEntregado(), is(false));
+	}
+
+	/**
+	 * Test que comprueba método toString comparando el objeto que llama al toString con los valores de otro objeto
+	 */
+	@Test
+	public void testToString() {
+		Videojuego juego = new Videojuego("Elden Ring", 32, "Soulslike", "From Software");
+
+		String expectedString = "Informacion del videojuego: \n" + "\tTitulo: " + juego.getTitulo() + "\n" + "\tHoras estimadas: "
+				+ juego.getHorasEstimadas() + "\n" + "\tGenero: " + juego.getGenero() + "\n" + "\tcompañia: " + juego.getcompañia();
+		assertThat(juego.toString(), equalTo(expectedString));
+	}
 }
