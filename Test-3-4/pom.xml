@@ -2,11 +2,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.iescarrillo</groupId>
-	<artifactId>Test-3-2-Hamcrest</artifactId>
+	<artifactId>Test-3-4</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>Test-3-2-Hamcrest</name>
+	<name>Test-3-4</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
@@ -29,13 +29,4 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.22.2</version>
-			</plugin>
-		</plugins>
-	</build>
 </project>
