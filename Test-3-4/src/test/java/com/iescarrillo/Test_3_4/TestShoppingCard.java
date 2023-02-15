@@ -1,6 +1,7 @@
 package com.iescarrillo.Test_3_4;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.hamcrest.Matchers.equalTo;
@@ -69,25 +70,28 @@ public class TestShoppingCard {
 		ShoppingCart carroCompra = new ShoppingCart();
 		Product producto1 = new Product("Refresco", 1.20);
 		Product producto2 = new Product("Harina", 0.8);
-		
+
 		carroCompra.addItem(producto1);
 		carroCompra.addItem(producto2);
-		
+
 		carroCompra.removeItem(producto1);
-		
+
 		assertThat(carroCompra.getItemCount(), equalTo(1));
-		
+
 	}
-	
+
 	@Test
-	public void testProductNotFoundException() {
-        try {
-            throw new ProductNotFoundException();
-        } catch (ProductNotFoundException e) {
-            assertThat(e, is(instanceOf(Exception.class)));
-            assertThat(e, is(instanceOf(ProductNotFoundException.class)));
-        }
-    }
-	
-	
+	public void testEliminarConTry() {
+		ShoppingCart carroCompra = new ShoppingCart();
+		Product producto1 = new Product("Refresco", 1.20);
+
+		carroCompra.addItem(producto1);
+		try {
+			carroCompra.removeItem(producto1);
+			
+		} catch (ProductNotFoundException e) {
+			fail("Entra en la excepción", e);
+		}
+	}
+
 }
