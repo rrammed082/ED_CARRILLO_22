@@ -2,23 +2,24 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.iescarrillo</groupId>
-	<artifactId>PruebaUD03-1</artifactId>
+	<artifactId>Test-3-5</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>PruebaUD03-1</name>
+	<name>Test-3-5</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<junit-jupiter.version>5.4.0</junit-jupiter.version>
+		<maven.compiler.source>1.7</maven.compiler.source>
+		<maven.compiler.target>1.7</maven.compiler.target>
 	</properties>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-engine</artifactId>
-			<version>5.8.0</version>
+			<version>5.4.0</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -26,17 +27,6 @@
 			<artifactId>hamcrest</artifactId>
 			<version>2.2</version>
 			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-params</artifactId>
-			<version>5.8.0</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.junit.platform</groupId>
-			<artifactId>junit-platform-suite-engine</artifactId>
-			<version>1.9.2</version>
 		</dependency>
 	</dependencies>
 </project>

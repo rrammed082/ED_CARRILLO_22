@@ -7,6 +7,8 @@ import static org.hamcrest.Matchers.lessThan;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class TestCuentaMovimiento {
 
@@ -68,7 +70,7 @@ public class TestCuentaMovimiento {
 	}
 
 	@Test
-	public void testRetirarDineroInsuficiente() throws Exception {
+	public void testRetirarDineroInsuficiente() throws SaldoInsuficienteException, IngresoNegativoException {
 		Cuenta cuenta1 = new Cuenta("0", "Genérico 1");
 		cuenta1.ingresar("Ingreso para comprobar dinero insuficiente", 12000);
 		boolean retirado = true;
@@ -84,11 +86,12 @@ public class TestCuentaMovimiento {
 	}
 
 	@Test
-	public void testIngresarCantidadNegativa() throws Exception {
+	public void testIngresarCantidadNegativa() throws IngresoNegativoException {
 		Cuenta cuenta1 = new Cuenta("0", "Genérico 1");
 		try {
 			cuenta1.ingresar("Ingresar cantidad negativa", -3);
 		} catch (Exception e) {
+			e.getMessage().equals("No se puede retirar una cantidad negativa");
 		}
 
 	}
@@ -96,5 +99,25 @@ public class TestCuentaMovimiento {
 	@Test
 	public void testAddMovimiento() {
 		Movimiento m = new Movimiento();
+	}
+	
+	@ParameterizedTest
+	@ValueSource(doubles = {100.0, 0.0, -100})
+	public void testIngresarConParametros(double ingreso) throws IngresoNegativoException{
+		Cuenta cuenta1 = new Cuenta("0", "Genérico 1");
+
+		cuenta1.ingresar("Ingreso en efectivo", ingreso);
+	}
+	
+	@ParameterizedTest
+	@ValueSource(doubles = {100.0, 7.0, -100})
+	public void testRetirarConParametros(double retiro) throws SaldoInsuficienteException, IngresoNegativoException{
+		Cuenta cuenta1 = new Cuenta("0", "Genérico 1");
+		Movimiento m = new Movimiento();
+		m.setConcepto("Ingreso");
+		m.setImporte(99);
+		cuenta1.addMovimiento(m);
+		
+		cuenta1.retirar("Retiro de dinero en cajero", retiro);;
 	}
 }
